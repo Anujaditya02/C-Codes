@@ -1,0 +1,76 @@
+Reverse words in a given string
+
+Input: str = i.like.this.program.very.much
+Output: much.very.program.this.like.i
+
+Approach 1 --> With Stack
+
+public string reverseWords(string str) {
+        // code here
+        Stack<string> st = new Stack<string>();
+        string rev = String.Empty;
+        
+        foreach(char c in str){
+            if(c!='.'){
+                rev += c;
+            }else if(rev.Length>0){
+                st.Push(rev);
+                rev = String.Empty;
+            }
+        }
+        
+        if(rev.Length>0){
+            st.Push(rev);
+        }
+        
+        string finalrev = String.Empty;
+        
+        while(st.Count>0){
+            finalrev += st.Pop();
+            if(st.Count>0){
+                finalrev += '.';
+            }
+        }
+        
+        return finalrev;
+    }
+
+
+
+
+Approach 2 --> In Place manipulation
+
+
+private void Reverse(char[] ch, int start, int end){
+        while(start<end){
+            char c = ch[start];
+            ch[start] = ch[end];
+            ch[end] = c;
+            start++;
+            end--;
+        }
+    }
+    
+    
+    
+    public string reverseWords(string str) {
+        // code here
+        char[] c = str.ToCharArray();
+        
+        Reverse(c,0,str.Length-1);
+        
+        int start = 0;
+        for(int end = 0; end<c.Length; end++){
+            if(c[end] == '.'){
+                Reverse(c,start,end-1);
+                start = end + 1;
+            }
+        }
+        
+        Reverse(c,start,c.Length-1);
+        
+        return new string(c);
+        
+    }
+
+
