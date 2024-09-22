@@ -1,0 +1,23 @@
+Write a program to reverse the array
+
+Input:
+arr[] = [1 5 3 2]
+Output: [1 2 3 5]
+
+Approach 
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		int[] arr = {2,5,1,4,3};
+		Array.Sort(arr);
+		
+		foreach(int c in arr){
+			Console.WriteLine(c);
+		}
+		
+	}
+}
