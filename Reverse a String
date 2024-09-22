@@ -1,0 +1,37 @@
+Reverse a String
+
+Input:
+s = Geeks
+Output: skeeG
+
+Approach 1
+
+public string reverseWord(string str)
+    {
+        //Your code here
+        char[] ch = str.ToCharArray();
+        
+        Array.Reverse(ch);
+        
+        return new string(ch);
+    }
+
+Approach 2
+
+public string reverseWord(string str)
+    {
+        //Your code here
+        char[] ch = str.ToCharArray();
+        
+        int start = 0, end = str.Length - 1;
+        
+        while(start<end){
+            char temp = ch[start];
+            ch[start] = ch[end];
+            ch[end] = temp;
+            start++;
+            end--;
+        }
+        
+        return new string(ch);
+    }
