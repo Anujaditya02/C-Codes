@@ -1,0 +1,46 @@
+Longest Common Prefix of Strings
+
+
+Input: arr[] = ["geeksforgeeks", "geeks", "geek", "geezer"]
+Output: gee
+
+Approach 
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		string[] arr = {"geeksforgeeks", "geeks", "geek", "geezer"};
+		
+		Console.Write(LongestCommonPrefix(arr));
+		
+	}
+	
+	static string LongestCommonPrefix(string[] str){
+	  if(str == null || str.Length == 0){
+	     return "-1";
+	  }
+	
+	  Array.Sort(str);
+		
+	  string first = str[0];
+	  string last = str[str.Length - 1];
+	  int min = Math.Min(first.Length,last.Length);
+		
+	  int i=0;	
+	  while(i<min && first[i] == last[i]){
+	     i++;
+	  }
+		
+	  if(i==0){
+	    return "-1";
+	  }
+	
+	  return first.Substring(0,i);
+	
+	}
+	
+	
+}
