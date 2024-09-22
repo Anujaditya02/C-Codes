@@ -1,0 +1,61 @@
+Find the Kth largest and Kth smallest number in an array
+
+Input: arr[] = [7, 10, 4, 3, 20, 15], k = 3
+Output:  7
+
+Approach 1:
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		int[] arr = {7, 10, 4, 3, 20, 15};
+		int k = 3;
+		
+		Array.Sort(arr);
+		
+		Console.Write(arr[k-1]);
+		
+	}
+}
+
+
+Approach 2 :
+
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		int[] arr = {7, 10, 4, 3, 20, 15};
+		int k = 3;
+		
+		int max_element  = 0;
+		for(int i=1;i<arr.Length;i++){
+		   if(arr[i] > max_element){
+		       max_element = arr[i];
+		   }
+		}
+		
+		int[] freq = new int[max_element + 1];
+		for(int i=0;i<arr.Length;i++){
+		    freq[arr[i]]++;
+		}
+		
+		int count = 0;
+		for(int i=0;i<=max_element;i++){
+		    if(freq[i]!=0){
+			   count += freq[i];
+			   if(count>=k){
+			      Console.Write(i);
+				   break;
+			   }
+			}
+		}
+		
+	}
+}
