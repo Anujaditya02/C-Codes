@@ -1,0 +1,27 @@
+Roman Number to Integer
+
+
+Input:
+s = V
+Output: 5
+
+Approach:
+
+public int romanToDecimal(string str) {
+        // code here
+        Dictionary<char,int> d = new Dictionary<char,int>(){
+        
+            {'I',1},{'V',5},{'X',10},{'L',50},{'C',100},{'D',500},{'M',1000}
+        };
+        int sum = 0;
+        for(int i=0;i<str.Length;i++){
+            if(i + 1 < str.Length && d[str[i]]<d[str[i+1]]){
+                sum += d[str[i+1]] - d[str[i]];
+                i++;
+            }else{
+                sum += d[str[i]];
+            }
+        }
+        
+        return sum;
+    }
