@@ -1,0 +1,49 @@
+Closest Strings
+
+Input:
+S = {"geeks", "for", "geeks", "contribute", 
+     "practice"}
+word1 = "geeks"
+word2 = "practice"
+Output: 2
+
+Approach:
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		string[] s = {"geeks", "for", "geeks", "contribute", 
+     "practice"};
+		
+		string word1 = "geeks";
+		string word2 = "practice";
+		int pos1 = -1,pos2 = -1,dist = 0;
+		for(int i=0;i<s.Length;i++){
+		   if (word1 == s[i])
+            {
+                pos1 = i;
+            }
+            if (word2 == s[i])
+            {
+                pos2 = i;
+            }
+            
+            // If both positions are found, break the loop early
+            if (pos1 != -1 && pos2 != -1)
+            {
+                break;
+            }
+		}
+		
+		 if (pos1 != -1 && pos2 != -1)
+        {
+            dist = Math.Abs(pos2 - pos1);
+		 }
+		
+		Console.Write(dist);
+		
+	}
+}
